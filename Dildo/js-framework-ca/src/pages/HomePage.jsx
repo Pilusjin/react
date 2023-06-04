@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Layout } from "../components/Layout";
 import { Product } from "../components/Product";
+import SearchBar from "../components/SearchBar";
 
 const ContentContainer = styled.div`
 display: grid; 
@@ -26,6 +27,8 @@ export function HomePage() {
 
     return (
         <Layout>
+            <SearchBar data={products}/>
+            <h1>Welcome eCom store</h1>
             <ContentContainer>
             {products?.map(p => (<Product product={p} />))}
             </ContentContainer>

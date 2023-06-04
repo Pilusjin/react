@@ -6,7 +6,8 @@ export function CheckoutSuccessPage() {
 
     return (
         <Layout>
-            checkoutSuccess
+            <h1>Success!</h1>
+            <p>Your order has been placed.</p>
         </Layout>
     )
 }

@@ -14,6 +14,20 @@ const StyledImage = styled.img`
 object-fit: fill;
 height: 200px;
 `
+const CartButton = styled.button`
+  background: #008CBA; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  cursor: pointer; /* Mouse pointer on hover */
+  display: block;
+  margin: 20px auto;
+  
+  &:hover {
+    background: #007B9A;
+  }
+`;
+
 const ImageContainer = styled.div` height: 200px; overflow: hidden;`
 
 const ReviewContainer = styled.div`text-align: left; background: green;`
@@ -39,7 +53,13 @@ export function ProductPage() {
                 <StyledImage src={product?.imageUrl} alt="Product image"/>
             </ImageContainer>
             <p>{product?.description}</p>
-            
+            <p>Price: ${product?.discountedPrice}</p>
+                {product?.discountedPrice < product?.price && 
+                <p>
+                Discount: ${product.price - product.discountedPrice} ({((1 - product.discountedPrice / product.price) * 100).toFixed(2)}%)
+                </p>
+                }
+            <CartButton onClick={() => addToCart(product)}>Add to cart</CartButton>
                 <h3>Reviews:</h3>
                 {product?.reviews.map(r => (
                 <ReviewContainer>
