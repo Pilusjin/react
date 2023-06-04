@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom/client'
 
 import './body.css'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import { Layout } from './components/Layout';
-import { ProductPage } from './pages/ProductPage';
+import { HomePage } from './pages/HomePage';
 import { ContactPage } from './pages/ContactPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { CheckoutSuccessPage } from './pages/CheckoutSuccessPage';
+import { ProductPage } from './pages/ProductPage';
 
 const router = createBrowserRouter([
   {
       path: "/",
-      element: <ProductPage/>,
+      element: <HomePage/>,
   },
   {
-      path: "/product/id",
+      path: "/product/:id",
       element: <ProductPage />,
   },
   {
