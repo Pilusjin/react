@@ -33,7 +33,7 @@ const ImageContainer = styled.div` height: 200px; overflow: hidden;`
 const ReviewContainer = styled.div`text-align: left; background: green;`
 
 
-export function ProductPage() {
+export function ProductPage() { // todo get setShoppingCart from parent
 
     const {id} = useParams();
     const [product, setProduct] = useState();
@@ -44,6 +44,11 @@ export function ProductPage() {
             .then(parsed => setProduct(parsed));
 
     }, [])
+
+    const [shoppingCart, setShoppingCart] = useState([]); // todo nuke this, just for mock up
+
+
+    console.log(shoppingCart)
 
     return (
         <Layout>
@@ -59,7 +64,7 @@ export function ProductPage() {
                 Discount: ${product.price - product.discountedPrice} ({((1 - product.discountedPrice / product.price) * 100).toFixed(2)}%)
                 </p>
                 }
-            <CartButton onClick={() => addToCart(product)}>Add to cart</CartButton>
+            <CartButton onClick={() => setShoppingCart([...shoppingCart, product])}>Add to cart</CartButton>
                 <h3>Reviews:</h3>
                 {product?.reviews.map(r => (
                 <ReviewContainer>

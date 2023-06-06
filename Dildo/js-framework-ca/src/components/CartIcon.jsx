@@ -1,5 +1,7 @@
 import CartOutlineSvg from "../assets/cart-outline.svg"
 import styled from "styled-components"
+import { Link } from "react-router-dom";
+
 
 const CartIconContainer=styled.div`
 position: relative;
@@ -19,15 +21,18 @@ position: absolute;
   color: white;
 `
 
-export function CartIcon (props) {
+export function CartIcon (shoppingCart) {
+
     return (
-        <CartIconContainer>
+        <Link to={"/checkout"}>
+        <CartIconContainer >
             <img src={CartOutlineSvg} alt="cart" />
             <Overlay>
-                {props.itemsInCart ?? 0}
+                <p>{shoppingCart.shoppingCart.length}</p>
             </Overlay>
             
         </CartIconContainer>
+        </Link>
 
     )
 }
