@@ -1,13 +1,15 @@
 import { Layout } from "../components/Layout";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
+export function CheckoutSuccessPage({shoppingCart, setShoppingCart}) {
 
-export function CheckoutSuccessPage() {
-    
-    // todo: empty cart using useEffect?
+    useEffect(() => {
+        setShoppingCart([]);
+    }, [setShoppingCart]);
 
     return (
-        <Layout>
+        <Layout shoppingCart={shoppingCart}  >
             <h1>Success!</h1>
             <p>Your order has been placed.</p>
 

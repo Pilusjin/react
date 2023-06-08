@@ -21,14 +21,14 @@ position: absolute;
   color: white;
 `
 
-export function CartIcon (shoppingCart) {
+export function CartIcon ({shoppingCart}) {
 
     return (
         <Link to={"/checkout"}>
         <CartIconContainer >
             <img src={CartOutlineSvg} alt="cart" />
             <Overlay>
-                <p>{shoppingCart.shoppingCart.length}</p>
+                <p>{shoppingCart?.length || 0}</p>
             </Overlay>
             
         </CartIconContainer>

@@ -28,12 +28,20 @@ const CartButton = styled.button`
   }
 `;
 
-const ImageContainer = styled.div` height: 200px; overflow: hidden;`
+const ImageContainer = styled.div` height: 200px overflow: hidden;`
 
-const ReviewContainer = styled.div`text-align: left; background: green;`
+const ReviewContainer = styled.div`text-align: left;
+background: #4caf50; /* A nicer shade of green */
+padding: 20px;
+border-radius: 10px;
+color: #ffffff; /* white text color */
+box-shadow: 0px 4px 10px rgba(0,0,0,0.1); /* some box-shadow for depth */
+margin-bottom: 20px; /* some margin to separate multiple containers */
+font-family: Arial, sans-serif; /* just an example of a font */
+`
 
 
-export function ProductPage() { // todo get setShoppingCart from parent
+export function ProductPage({shoppingCart, setShoppingCart}) { 
 
     const {id} = useParams();
     const [product, setProduct] = useState();
@@ -45,13 +53,8 @@ export function ProductPage() { // todo get setShoppingCart from parent
 
     }, [])
 
-    const [shoppingCart, setShoppingCart] = useState([]); // todo nuke this, just for mock up
-
-
-    console.log(shoppingCart)
-
     return (
-        <Layout>
+        <Layout shoppingCart={shoppingCart}>
             <ContentContainer>
             <h1>{product?.title}</h1>
             <ImageContainer>

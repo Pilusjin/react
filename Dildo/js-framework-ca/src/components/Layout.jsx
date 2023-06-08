@@ -8,7 +8,7 @@ font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;`
 export function Layout (props) {
     return (
         <StyledLayout>
-            <Header />
+            <Header shoppingCart={props.shoppingCart} />
             {props.children}
             <Footer/>
         </StyledLayout>

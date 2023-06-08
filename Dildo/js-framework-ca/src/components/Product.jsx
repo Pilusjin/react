@@ -28,8 +28,8 @@ const ImageContainer = styled.div``
     
 
 export  function Product (props) {
-
     const product = props.product;
+
     return (
         <Card>
             <h2>{product.title}</h2>

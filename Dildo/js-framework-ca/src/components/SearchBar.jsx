@@ -11,9 +11,8 @@ const SearchInput = styled.input`
   display: block;
 `;
 
-const SearchBar = ({ data }) => {
+const SearchBar = ({ data, setFilteredResults }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredResults, setFilteredResults] = useState([]);
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -28,24 +27,14 @@ const SearchBar = ({ data }) => {
     }
   };
 
+
   return (
-    <div>
       <SearchInput
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleChange}
       />
-      {filteredResults.length > 0 && (
-        <div>
-          {filteredResults.map((item) => (
-            <div key={item.id}>
-              <a href={`/ProductPage/${item.id}`}>{item.title}</a>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
   );
 };
 
