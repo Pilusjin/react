@@ -1,5 +1,5 @@
 import { Layout } from "../components/Layout"
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
@@ -9,41 +9,61 @@ justify-content: center;
 gap: 40px;
 margin: 20px;
 text-align: center;
+color: #444;
 `
 const StyledImage = styled.img`
-object-fit: fill;
-height: 200px;
+object-fit: contain;
+max-height: 100%;
+max-width: 100%;
 `
 const CartButton = styled.button`
-  background: #008CBA; /* Blue background */
-  border: none; /* Remove borders */
-  color: white; /* White text */
-  padding: 12px 24px; /* Some padding */
-  cursor: pointer; /* Mouse pointer on hover */
-  display: block;
-  margin: 20px auto;
+  background-color: #008CBA; 
+  border: none; 
+  color: white; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  transition-duration: 0.4s; 
+  cursor: pointer;
   
   &:hover {
-    background: #007B9A;
+    background-color: #4CAF50;
+    color: white;
   }
 `;
 
-const ImageContainer = styled.div` height: 200px overflow: hidden;`
-
-const ReviewContainer = styled.div`text-align: left;
-background: #4caf50; /* A nicer shade of green */
-padding: 20px;
-border-radius: 10px;
-color: #ffffff; /* white text color */
-box-shadow: 0px 4px 10px rgba(0,0,0,0.1); /* some box-shadow for depth */
-margin-bottom: 20px; /* some margin to separate multiple containers */
-font-family: Arial, sans-serif; /* just an example of a font */
-`
+const ImageContainer = styled.div`
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+`;
 
 
-export function ProductPage({shoppingCart, setShoppingCart}) { 
+const ReviewContainer = styled.div`
+  text-align: left;
+  background: #F0F0F0;
+  padding: 20px;
+  border-radius: 10px;
+  color: #000;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+`;
 
-    const {id} = useParams();
+const ProductTitle = styled.h1`
+  color: #008CBA;
+  font-size: 2.5rem;
+`;
+
+export function ProductPage({ shoppingCart, setShoppingCart }) { 
+
+    const { id } = useParams();
     const [product, setProduct] = useState();
 
     useEffect( () => {
@@ -56,7 +76,7 @@ export function ProductPage({shoppingCart, setShoppingCart}) {
     return (
         <Layout shoppingCart={shoppingCart}>
             <ContentContainer>
-            <h1>{product?.title}</h1>
+            <ProductTitle>{product?.title}</ProductTitle>
             <ImageContainer>
                 <StyledImage src={product?.imageUrl} alt="Product image"/>
             </ImageContainer>
@@ -69,8 +89,8 @@ export function ProductPage({shoppingCart, setShoppingCart}) {
                 }
             <CartButton onClick={() => setShoppingCart([...shoppingCart, product])}>Add to cart</CartButton>
                 <h3>Reviews:</h3>
-                {product?.reviews.map(r => (
-                <ReviewContainer>
+                {product?.reviews.map((r, index) => (
+                <ReviewContainer key={index}>
                 <p>Username: {r.username}</p>
                 <p>Rating: {r.rating} </p>
                 <p>Description: {r.description}</p>

@@ -32,7 +32,7 @@ export function HomePage({shoppingCart}) {
             <SearchBar data={products} setFilteredResults={setFilteredResults}/>
             <h1>Welcome eCom Store</h1>
             <ContentContainer>
-            {productsToRender?.map(p => (<Product product={p} />))}
+            {productsToRender?.map(p => (<Product key={p.id} product={p} />))}
             </ContentContainer>
         </Layout>
     )

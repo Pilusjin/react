@@ -6,6 +6,7 @@ import { CheckoutPage } from './pages/CheckoutPage';
 import { CheckoutSuccessPage } from './pages/CheckoutSuccessPage';
 import { ProductPage } from './pages/ProductPage';
 
+
 function App() {
     const [shoppingCart, setShoppingCart] = useState([])
 
