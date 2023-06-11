@@ -5,7 +5,7 @@ import { ContactPage } from './pages/ContactPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { CheckoutSuccessPage } from './pages/CheckoutSuccessPage';
 import { ProductPage } from './pages/ProductPage';
-import NotFound from './pages/NotFound';
+
 
 function App() {
     const [shoppingCart, setShoppingCart] = useState([]);
@@ -18,7 +18,6 @@ function App() {
                 <Route path="/checkout" element={<CheckoutPage shoppingCart={shoppingCart}/>} />
                 <Route path="/checkout/success" element={<CheckoutSuccessPage shoppingCart={shoppingCart} setShoppingCart={setShoppingCart}/>} />
                 <Route path="/contact" element={<ContactPage shoppingCart={shoppingCart} />} />
-                <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
     );
